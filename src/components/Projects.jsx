@@ -60,14 +60,16 @@ function Projects() {
                         id="pills-tab"
                       >
                         <Nav.Item>
-                          <Nav.Link eventKey="first">Tab 1</Nav.Link>
+                          <Nav.Link eventKey="first">
+                            Some of my recent projects
+                          </Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        {/* <Nav.Item>
                           <Nav.Link eventKey="second">Tab 2</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                           <Nav.Link eventKey="third">Tab 3</Nav.Link>
-                        </Nav.Item>
+                        </Nav.Item> */}
                       </Nav>
                       <Tab.Content>
                         <Tab.Pane eventKey="first">
@@ -77,8 +79,8 @@ function Projects() {
                             })}
                           </Row>
                         </Tab.Pane>
-                        <Tab.Pane eventKey="second">Hbuydeu</Tab.Pane>
-                        <Tab.Pane eventKey="third">ferfrefre</Tab.Pane>
+                        {/* <Tab.Pane eventKey="second">Hbuydeu</Tab.Pane>
+                        <Tab.Pane eventKey="third">ferfrefre</Tab.Pane> */}
                       </Tab.Content>
                     </Tab.Container>
                   </div>
