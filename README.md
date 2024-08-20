@@ -1,12 +1,12 @@
-🌐 ##Personal Portfolio Website
+🌐 **Personal Portfolio Website**
 Welcome to my Personal Portfolio website! This project showcases my skills, projects, and experience in web development and more.
 
-🚀 ##Technologies Used
+🚀 **Technologies Used**
 
 React: A JavaScript library for building user interfaces.
 
-HTML5: The standard markup language for creating web pages.  
-Bootstrap: A powerful, responsive front-end framework for faster and easier web development.  
+**HTML5**: The standard markup language for creating web pages.  
+_Bootstrap_: A powerful, responsive front-end framework for faster and easier web development.  
 Web3 Forms API: Integrated for seamless form submissions and handling.  
 MailerLite API: Used for managing and automating email newsletters.  
 FontAwesome (via CDNJS): Icon library for scalable vector icons.  
