@@ -85,13 +85,13 @@ function NavBar() {
                 target="blank"
                 href="https://www.linkedin.com/in/seandonovan-upenn/"
               >
-                <img src={linkedin} alt="" />
+                <img src={linkedin} alt="GitHub Icon" />
               </a>
               <a target="blank" href="https://www.github.com/INTSEAN/">
-                <img src={github} alt="" />
+                <img src={github} alt="GitHub Icon" />
               </a>
-              <a target="blank" href="mailto:donovans064@gmail.com">
-                <img onClick={handleEmail} src={mail} alt="" />
+              <a target="blank" onClick={scrollToContact}>
+                <img src={mail} alt="Mail Icom" />
               </a>
             </div>
             <button className="#footer" onClick={scrollToContact}>
