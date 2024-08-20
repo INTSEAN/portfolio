@@ -1,10 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import logo from "../assets/img/house-solid.svg";
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/github-brands-solid.svg";
 import navIcon3 from "../assets/img/envelope-regular.svg";
-import { Newsletter } from "./Newsletter";
+import Newsletter from "./Newsletter.jsx";
 
 function Footer() {
   return (
