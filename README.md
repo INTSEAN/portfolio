@@ -11,7 +11,8 @@ _MailerLite API_: Used for managing and automating email newsletters.
 _FontAwesome (via CDNJS)_: Icon library for scalable vector icons.  
 _Animate CSS_: A library for cross-browser animations that adds life to the website.
 
-📄 Features  
+📄 Features
+
 _Responsive Design_: The website is fully responsive, adapting to any screen size.  
 _Interactive UI_: Built with React and Bootstrap to ensure a smooth and interactive user experience.  
 _Contact Form_: Integrated with Web3 Forms API for secure and reliable form submissions.  
