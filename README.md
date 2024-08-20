@@ -3,22 +3,24 @@ Welcome to my Personal Portfolio website! This project showcases my skills, proj
 
 🚀 **Technologies Used**
 
-React: A JavaScript library for building user interfaces.
-
+React: A JavaScript library for building user interfaces.  
 **HTML5**: The standard markup language for creating web pages.  
 _Bootstrap_: A powerful, responsive front-end framework for faster and easier web development.  
-Web3 Forms API: Integrated for seamless form submissions and handling.  
-MailerLite API: Used for managing and automating email newsletters.  
-FontAwesome (via CDNJS): Icon library for scalable vector icons.  
-Animate CSS: A library for cross-browser animations that adds life to the website.  
+_Web3 Forms API_: Integrated for seamless form submissions and handling.  
+_MailerLite API_: Used for managing and automating email newsletters.  
+_FontAwesome (via CDNJS)_: Icon library for scalable vector icons.  
+_Animate CSS_: A library for cross-browser animations that adds life to the website.
+
 📄 Features  
-Responsive Design: The website is fully responsive, adapting to any screen size.  
-Interactive UI: Built with React and Bootstrap to ensure a smooth and interactive user experience.  
-Contact Form: Integrated with Web3 Forms API for secure and reliable form submissions.  
-Newsletter Subscription: Connected to MailerLite for easy newsletter sign-ups and management.  
-Smooth Animations: Enhanced user experience with subtle animations using Animate CSS.  
-Iconography: Utilized FontAwesome for visually appealing and accessible icons throughout the website.  
-🎨 Design  
+_Responsive Design_: The website is fully responsive, adapting to any screen size.  
+_Interactive UI_: Built with React and Bootstrap to ensure a smooth and interactive user experience.  
+_Contact Form_: Integrated with Web3 Forms API for secure and reliable form submissions.  
+_Newsletter Subscription_: Connected to MailerLite for easy newsletter sign-ups and management.  
+_Smooth Animations_: Enhanced user experience with subtle animations using Animate CSS.  
+_Iconography_: Utilized FontAwesome for visually appealing and accessible icons throughout the website.
+
+🎨 Design
+
 The portfolio features a modern, clean, and minimalistic design. Bootstrap's grid system ensures a consistent layout across devices, while the combination of FontAwesome icons and Animate CSS adds a touch of elegance and interactivity.
 
 🛠 Installation & Setup  
