@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 
-export const Newsletter = ({ status, message, onValidated }) => {
+function Newsletter({ status, message, onValidated }) {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
@@ -50,4 +50,6 @@ export const Newsletter = ({ status, message, onValidated }) => {
       </div>
     </Col>
   );
-};
+}
+
+export default Newsletter;
