@@ -30,25 +30,25 @@ To get a local copy up and running, follow these steps:
 Clone the repository:
 
 ```sh
-    git clone https://github.com/INTSEAN/portfolio.git
+git clone https://github.com/INTSEAN/portfolio.git
 ```
 
 Navigate to the project directory:
 
 ```sh
-      cd portfolio
+cd portfolio
 ```
 
 Install dependencies:
 
 ```sh
-      npm install
+npm install
 ```
 
 Run the development server:
 
 ```sh
-      npm start
+npm start
 ```
 
 The website should now be running locally at http://localhost:3000.
