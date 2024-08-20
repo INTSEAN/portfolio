@@ -42,7 +42,7 @@ function NavBar() {
     <Navbar expand="lg" className={scroll ? "Scrolled" : ""}>
       <Container>
         <Navbar.Brand href="#home" className="navbar-brand">
-          <a href="https://seandonovan.app.netlify/">
+          <a href="https://seandonovan.netlify.app/">
             <img src={logo} alt="logo" />
           </a>
         </Navbar.Brand>
