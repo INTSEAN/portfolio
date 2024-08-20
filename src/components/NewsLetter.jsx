@@ -1,12 +1,9 @@
-import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 
 function Newsletter() {
-  const [email, setEmail] = useState("");
-
   return (
     <Col lg={12}>
-      <div className="newsletter-bx wow slideInUp">
+      <div className="newsletter-bx ">
         <Row>
           <Col lg={12} md={6} xl={5}>
             <h3 style={{ fontSize: "20px", letterSpacing: "2px" }}>
@@ -18,11 +15,10 @@ function Newsletter() {
             <form>
               <div className="new-email-bx">
                 <input
-                  value={email}
+                  value=""
                   name="email"
                   autoComplete="true"
                   type="email"
-                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email Address"
                 />
                 <button type="submit">Submit</button>
