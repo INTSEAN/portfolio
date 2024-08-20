@@ -46,6 +46,11 @@ function Banner() {
       setDelta(500);
     }
   };
+
+  const scrollToContact = () => {
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <section className="banner" id="home">
@@ -79,7 +84,7 @@ function Banner() {
                       that improve lives. Let's connect and explore how we can
                       make a positive difference together!
                     </p>
-                    <button onClick={() => console.log("connect")}>
+                    <button onClick={scrollToContact}>
                       Let's connect
                       <i
                         class="fa-solid fa-circle-arrow-right"

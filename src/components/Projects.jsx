@@ -15,13 +15,7 @@ function Projects() {
       title: "Hack Mate",
       description: "Social Media + Hackathons",
       imgUrl: hackmate,
-      link: "https://www.google.com",
-    },
-    {
-      title: "Gym Jam",
-      description: "Fitness + Music👟",
-      imgUrl: gymJam,
-      link: "https://gymjam.netlify.app/",
+      link: "https://github.com/Namit2111/hackMate",
     },
     {
       title: "Penn GPT",
@@ -34,6 +28,12 @@ function Projects() {
       description: "Machine Learning + Linguistics 💻",
       imgUrl: wordLingo,
       link: "https://wordlingo.netlify.app/",
+    },
+    {
+      title: "Gym Jam",
+      description: "Fitness + Music👟",
+      imgUrl: gymJam,
+      link: "https://gymjam.netlify.app/",
     },
   ];
   return (
@@ -54,27 +54,26 @@ function Projects() {
                         id="pills-tab"
                       >
                         <Nav.Item>
-                          <Nav.Link eventKey="first">
-                            Some of my recent projects
-                          </Nav.Link>
-                        </Nav.Item>
-                        {/* <Nav.Item>
-                          <Nav.Link eventKey="second">Tab 2</Nav.Link>
+                          <Nav.Link eventKey="first">Project Tab</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="third">Tab 3</Nav.Link>
-                        </Nav.Item> */}
+                          <Nav.Link eventKey="second"> Coming Soon </Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                          <Nav.Link eventKey="third"> Coming Soon</Nav.Link>
+                        </Nav.Item>
                       </Nav>
                       <Tab.Content>
                         <Tab.Pane eventKey="first">
+                          {" "}
                           <Row>
                             {projects.map((project, index) => {
                               return <ProjectCard key={index} {...project} />;
                             })}
                           </Row>
                         </Tab.Pane>
-                        {/* <Tab.Pane eventKey="second">Hbuydeu</Tab.Pane>
-                        <Tab.Pane eventKey="third">ferfrefre</Tab.Pane> */}
+                        <Tab.Pane eventKey="second"></Tab.Pane>
+                        <Tab.Pane eventKey="third"></Tab.Pane>
                       </Tab.Content>
                     </Tab.Container>
                   </div>
