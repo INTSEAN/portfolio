@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/github-brands-solid.svg";
 import navIcon3 from "../assets/img/instagram-brands-solid.svg";
-import Newsletter from "./Newsletter.jsx";
+import Newsletter from "./Newsletter";
 
 function Footer() {
   return (
