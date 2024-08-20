@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Newsletter from "./Newsletter";
+import Subscribe from "./Subscribe";
 import navIcon1 from "../assets/img/nav-icon1.svg";
 import navIcon2 from "../assets/img/github-brands-solid.svg";
 import navIcon3 from "../assets/img/instagram-brands-solid.svg";
@@ -11,7 +11,7 @@ function Footer() {
       <Container>
         <Row className="align-items-center text-center">
           <Col>
-            <Newsletter />
+            <Subscribe />
           </Col>
           <Col>
             <div className="social-icon">

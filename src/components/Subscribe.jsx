@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 
-function Newsletter() {
+function Subscribe() {
   return (
     <Col lg={12}>
       <div className="newsletter-bx ">
@@ -32,4 +32,4 @@ function Newsletter() {
   );
 }
 
-export default Newsletter;
+export default Subscribe;
