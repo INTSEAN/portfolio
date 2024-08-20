@@ -30,21 +30,21 @@ Clone the repository:
 
 Navigate to the project directory:
 
-    ```sh
+```sh
       cd portfolio
-    ```
+```
 
 Install dependencies:
 
-    ```sh
+```sh
       npm install
-    ```
+```
 
 Run the development server:
 
-    ```sh
+```sh
       npm start
-    ```
+```
 
 The website should now be running locally at http://localhost:3000.
 
@@ -53,10 +53,3 @@ Feel free to reach out to me via the contact form on my website: https//seandono
 
 📝 License
 This project is open-source and available under the MIT License.
-
-````
-
-```
-
-```
-````
