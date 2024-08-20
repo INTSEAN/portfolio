@@ -44,13 +44,7 @@ function Projects() {
             <Col>
               <TrackVisibility>
                 {({ isVisible }) => (
-                  <div
-                    className={
-                      isVisible
-                        ? "animate__animated animate__flipInY"
-                        : "animate__animated animate__rotateOutUpRight"
-                    }
-                  >
+                  <div className={isVisible ? "" : ""}>
                     <h2>Projects</h2>
                     <p>Welcome to my Project Section 📊 </p>
                     <Tab.Container id="projects-tabs" defaultActiveKey="first">
