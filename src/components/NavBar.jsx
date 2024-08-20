@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import React from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import logo from "../assets/img/house-solid.svg";
+import logo from "../assets/img/logo-solid.svg";
 import { useState, useEffect } from "react";
 import mail from "../assets/img/envelope-regular.svg";
 import linkedin from "../assets/img/linkedin-brands-solid.svg";
@@ -34,11 +34,15 @@ function NavBar() {
     window.location.href = "mailto:donovans064@gmail.com";
   }
 
+  const scrollToContact = () => {
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <Navbar expand="lg" className={scroll ? "Scrolled" : ""}>
       <Container>
         <Navbar.Brand href="#home" className="navbar-brand">
-          <a>
+          <a href="https://seandonovan.app.netlify/">
             <img src={logo} alt="logo" />
           </a>
         </Navbar.Brand>
@@ -77,17 +81,20 @@ function NavBar() {
           </Nav>
           <span className="navbar-text">
             <div className="social-icon">
-              <a href="https://www.linkedin.com/in/seandonovan-upenn/">
+              <a
+                target="blank"
+                href="https://www.linkedin.com/in/seandonovan-upenn/"
+              >
                 <img src={linkedin} alt="" />
               </a>
-              <a href="https://www.github.com/INTSEAN/">
+              <a target="blank" href="https://www.github.com/INTSEAN/">
                 <img src={github} alt="" />
               </a>
-              <a href="mailto:donovans064@gmail.com">
+              <a target="blank" href="mailto:donovans064@gmail.com">
                 <img onClick={handleEmail} src={mail} alt="" />
               </a>
             </div>
-            <button className="#footer" onClick={() => console.log("connect")}>
+            <button className="#footer" onClick={scrollToContact}>
               Let's connect
             </button>
           </span>
