@@ -82,6 +82,7 @@ function Contact() {
                     type="text"
                     autoComplete="true"
                     name="name"
+                    required
                     value={formDetails.firstName}
                     placeholder="First Name"
                     onChange={(e) => onFormUpdate("firstName", e.target.value)}
@@ -92,6 +93,7 @@ function Contact() {
                     type="text"
                     autoComplete="true"
                     name="name"
+                    required
                     value={formDetails.lastName}
                     placeholder="Last Name "
                     onChange={(e) => onFormUpdate("lastName", e.target.value)}
@@ -102,6 +104,7 @@ function Contact() {
                     type="email"
                     autoComplete="true"
                     name="email"
+                    required
                     value={formDetails.email}
                     placeholder="Email 📧"
                     onChange={(e) => onFormUpdate("email", e.target.value)}
@@ -122,6 +125,7 @@ function Contact() {
                     row="6"
                     name="message"
                     autoComplete="true"
+                    required
                     value={formDetails.message}
                     placeholder="Leave a message 📥"
                     onChange={(e) => onFormUpdate("message", e.target.value)}
