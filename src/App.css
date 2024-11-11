@@ -763,7 +763,7 @@ footer button:hover::before {
   border-radius: 15px;
   overflow: hidden;
   margin-bottom: 24px;
-  aspect-ratio: 16/9;  /* Maintain consistent aspect ratio */
+  aspect-ratio: 16/16;  /* Maintain consistent aspect ratio */
 }
 
 .proj-imgbx img {
