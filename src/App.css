@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: Centra;
   src: url('./assets/font/CentraNo2-Bold.ttf');
@@ -678,4 +677,119 @@ footer button:hover::before {
 	width: 100%;
 	height: 100%;
 	position: absolute;
+}
+
+.proj-imgbx {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.proj-imgbx:hover {
+  transform: translateY(-5px);
+}
+
+.proj-imgbx img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.proj-txtx {
+  position: absolute;
+  text-align: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+  transition: 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 8px;
+}
+
+.proj-imgbx:hover .proj-txtx {
+  opacity: 1;
+}
+
+.view-project {
+  margin-top: 15px;
+  padding: 8px 20px;
+  border: 2px solid white;
+  border-radius: 25px;
+  background: transparent;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.view-project:hover {
+  background: white;
+  color: black;
+}
+
+.proj-txtx {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.proj-imgbx:hover .proj-txtx {
+  opacity: 1;
+}
+
+/* Ensure the image fills the container properly */
+.proj-imgbx {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  aspect-ratio: 16/9;  /* Maintain consistent aspect ratio */
+}
+
+.proj-imgbx img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.proj-category {
+  font-size: 14px;
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.proj-technologies {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.proj-tech-tag {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 12px;
 }
