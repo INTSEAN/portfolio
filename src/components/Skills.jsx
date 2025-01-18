@@ -68,7 +68,7 @@ function Skills() {
               <div className="skills-bx">
                 <h2>Programming Languages + Frameworks</h2>
                 <p> I speak fluent... </p>
-                {isDesktop ? (
+                {!isDesktop ? (
                   <Carousel
                     responsive={responsive}
                     infinite={true}
