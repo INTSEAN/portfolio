@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
 import ProjectCard from "./ProjectCard";
 import "animate.css";
@@ -15,7 +15,19 @@ import aitutor from "../assets/img/aitutor.jpg";
 
 import ShinyText from "./ShinyText";
 import BlobCursor from "./BlobCursor";
+
 function Projects() {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const [hoveredProject, setHoveredProject] = useState(null);
 
   const projects = [
@@ -25,8 +37,8 @@ function Projects() {
       imgUrl: yaqin,
       link: "https://yaqvent.netlify.app/",
       category: "web",
-      technologies: [ "Typescript", "React", "Node.js"],
-      date: "2024"
+      technologies: ["Typescript", "React", "Node.js"],
+      date: "2024",
     },
     {
       title: "Bridged Consultants",
@@ -35,7 +47,7 @@ function Projects() {
       link: "https://bridgedconsultants.com",
       category: "web",
       technologies: ["React", "Node.js"],
-      date: "2024"
+      date: "2024",
     },
     {
       title: "Gym Jam",
@@ -44,7 +56,7 @@ function Projects() {
       link: "https://gymjam.netlify.app/",
       category: "web",
       technologies: ["React", "Node.js"],
-      date: "2024"
+      date: "2024",
     },
     {
       title: "Word Lingo",
@@ -53,7 +65,7 @@ function Projects() {
       link: "https://wordlingo.netlify.app/",
       category: "ai",
       technologies: ["React", "Node.js"],
-      date: "2024"
+      date: "2024",
     },
     {
       title: "dALGOna",
@@ -62,9 +74,8 @@ function Projects() {
       link: "https://dalgorithm.netlify.app/",
       category: "web",
       technologies: ["React", "Node.js", "Tailwind"],
-      date: "2025"
+      date: "2025",
     },
-    ,
     {
       title: "Hack Mate",
       description: "Social Media + Hackathons",
@@ -72,7 +83,7 @@ function Projects() {
       link: "https://github.com/Namit2111/hackMate",
       category: "web",
       technologies: ["React", "Node.js"],
-      date: "2024"
+      date: "2024",
     },
     {
       title: "AI Tutor",
@@ -81,7 +92,7 @@ function Projects() {
       link: "https://tutorize.netlify.app/",
       category: "ai",
       technologies: ["React", "Node.js"],
-      date: "2024"
+      date: "2024",
     },
     {
       title: "Penn GPT",
@@ -90,7 +101,7 @@ function Projects() {
       link: "https://penngpt.netlify.app/",
       category: "ai",
       technologies: ["React", "Node.js"],
-      date: "2024"
+      date: "2024",
     },
   ];
 
@@ -98,26 +109,38 @@ function Projects() {
     <>
       <section className="project" id="projects">
         <Container>
-          <BlobCursor />
+          {isDesktop && <BlobCursor />}
           <Row>
             <Col>
               <TrackVisibility>
                 {({ isVisible }) => (
-                  <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                  <div
+                    className={
+                      isVisible ? "animate__animated animate__fadeIn" : ""
+                    }
+                  >
                     <h2>Projects</h2>
-            
-                    <p><ShinyText text="Explore my latest work in medical consulting, education technology, and web development 🚀" disabled={false} speed={3} className='custom-class' />
+
+                    <p>
+                      <ShinyText
+                        text="Explore my latest work in medical consulting, education technology, and web development 🚀"
+                        disabled={false}
+                        speed={3}
+                        className="custom-class"
+                      />
                     </p>
                     <Tab.Container id="projects-tabs" defaultActiveKey="first">
-                      <Nav 
-                        variant="pills" 
+                      <Nav
+                        variant="pills"
                         className="nav-pills mb-5 justify-content-center align-items-center"
                       >
                         <Nav.Item>
-                          <Nav.Link eventKey="first">All Projects</Nav.Link>
+                          <Nav.Link eventKey="first">All</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="second">Web Development</Nav.Link>
+                          <Nav.Link eventKey="second">
+                            Web Dev
+                          </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                           <Nav.Link eventKey="third">AI & ML</Nav.Link>
@@ -127,8 +150,8 @@ function Projects() {
                         <Tab.Pane eventKey="first">
                           <Row className="justify-content-center">
                             {projects.map((project, index) => (
-                              <ProjectCard 
-                                key={index} 
+                              <ProjectCard
+                                key={index}
                                 {...project}
                                 onMouseEnter={() => setHoveredProject(index)}
                                 onMouseLeave={() => setHoveredProject(null)}
@@ -140,7 +163,7 @@ function Projects() {
                         <Tab.Pane eventKey="second">
                           <Row>
                             {projects
-                              .filter(project => project.category === 'web')
+                              .filter((project) => project.category === "web")
                               .map((project, index) => (
                                 <ProjectCard key={index} {...project} />
                               ))}
@@ -149,7 +172,7 @@ function Projects() {
                         <Tab.Pane eventKey="third">
                           <Row>
                             {projects
-                              .filter(project => project.category === 'ai')
+                              .filter((project) => project.category === "ai")
                               .map((project, index) => (
                                 <ProjectCard key={index} {...project} />
                               ))}
