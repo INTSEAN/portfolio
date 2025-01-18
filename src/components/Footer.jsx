@@ -6,6 +6,7 @@ import navIcon2 from "../assets/img/github-brands-solid.svg";
 import navIcon3 from "../assets/img/instagram-brands-solid.svg";
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="footer">
       <Container>
@@ -28,7 +29,7 @@ function Footer() {
                 <img src={navIcon3} alt="Icon" />
               </a>
             </div>
-            <p>Copyright &copy; 2024. Sean Donovan's Portfolio</p>
+            <p>Copyright &copy; {currentYear}. Sean Donovan's Portfolio</p>
           </Col>
         </Row>
       </Container>
