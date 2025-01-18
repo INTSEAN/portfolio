@@ -10,17 +10,22 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.5",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "framer-motion": "^11.18.1",
     "nodemailer": "^6.9.14",
+    "postprocessing": "^6.36.6",
     "react": "^18.3.1",
+    "react-bits": "^1.0.5",
     "react-bootstrap": "^2.10.4",
     "react-dom": "^18.3.1",
     "react-multi-carousel": "^2.8.5",
     "react-on-screen": "^2.1.1",
-    "sitemap": "^8.0.0"
+    "sitemap": "^8.0.0",
+    "three": "^0.172.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
@@ -32,6 +37,7 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
+    "sass-embedded": "^1.83.4",
     "vite": "^5.4.1"
   }
 }

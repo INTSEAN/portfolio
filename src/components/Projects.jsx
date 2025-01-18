@@ -9,7 +9,8 @@ import pennGpt from "../assets/img/penngpt.png";
 import gymJam from "../assets/img/gymjam.png";
 import hackmate from "../assets/img/hackmate.png";
 import bridged from "../assets/img/bridged.png";
-
+import ShinyText from "./ShinyText";
+import BlobCursor from "./BlobCursor";
 function Projects() {
   const [hoveredProject, setHoveredProject] = useState(null);
 
@@ -65,13 +66,16 @@ function Projects() {
     <>
       <section className="project" id="projects">
         <Container>
+          <BlobCursor />
           <Row>
             <Col>
               <TrackVisibility>
                 {({ isVisible }) => (
                   <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                     <h2>Projects</h2>
-                    <p>Explore my latest work in medical consulting, education technology, and web development 🚀</p>
+            
+                    <p><ShinyText text="Explore my latest work in medical consulting, education technology, and web development 🚀" disabled={false} speed={3} className='custom-class' />
+                    </p>
                     <Tab.Container id="projects-tabs" defaultActiveKey="first">
                       <Nav 
                         variant="pills" 

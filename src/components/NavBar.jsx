@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import mail from "../assets/img/envelope-regular.svg";
 import linkedin from "../assets/img/linkedin-brands-solid.svg";
 import github from "../assets/img/github-brands-solid.svg";
+import TrueFocus from "./TrueFocus";
 
 function NavBar() {
   const [activeLink, setActiveLink] = useState("home");
@@ -95,7 +96,14 @@ function NavBar() {
               </a>
             </div>
             <button className="#footer" onClick={scrollToContact}>
-              Let's connect
+            <TrueFocus 
+sentence="Let's connect"
+manualMode={false}
+blurAmount={5}
+borderColor="purple"
+animationDuration={2}
+pauseBetweenAnimations={1}
+/>
             </button>
           </span>
         </Navbar.Collapse>
