@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -11,13 +11,23 @@ import langSeven from "../assets/img/lang7.svg";
 import langEight from "../assets/img/lang8.svg";
 import langNine from "../assets/img/lang9.svg";
 import langEleven from "../assets/img/lang11.svg";
-
 import colorSharp from "../assets/img/color-sharp.png";
+import RollingGallery from './RollingGallery';
 
 function Skills() {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5,
     },
@@ -35,48 +45,44 @@ function Skills() {
     },
   };
 
+  const skillImages = [
+    langOne,
+    langTwo,
+    langThree,
+    langFour,
+    langFive,
+    langSeven,
+    langEight,
+    langNine,
+    langEleven,
+  ];
+
   return (
     <>
-      <section className="skill" id="skills">
+      <section className="skill" id="skills" style={{ position: 'relative' }}>
+        <div className="magnet-lines-background">
+        </div>
         <Container>
           <Row>
             <Col>
               <div className="skills-bx">
                 <h2>Programming Languages + Frameworks</h2>
                 <p> I speak fluent... </p>
-                <Carousel
-                  responsive={responsive}
-                  infinite={true}
-                  className="skill-slider"
-                >
-                  <div className="item">
-                    <img src={langOne} alt="Image" />
-                  </div>
-                  <div className="item">
-                    <img src={langTwo} alt="Image" />
-                  </div>
-                  <div className="item">
-                    <img src={langThree} alt="Image" />
-                  </div>
-                  <div className="item">
-                    <img src={langFour} alt="Image" />
-                  </div>
-                  <div className="item">
-                    <img src={langFive} alt="Image" />
-                  </div>
-                  <div className="item">
-                    <img src={langSeven} alt="Image" />
-                  </div>
-                  <div className="item">
-                    <img src={langEight} alt="Image" />
-                  </div>
-                  <div className="item">
-                    <img src={langNine} alt="Image" />
-                  </div>
-                  <div className="item">
-                    <img src={langEleven} alt="Image" />
-                  </div>
-                </Carousel>
+                {isDesktop ? (
+                  <Carousel
+                    responsive={responsive}
+                    infinite={true}
+                    className="skill-slider"
+                  >
+                    {skillImages.map((img, index) => (
+                      <div className="item" key={index}>
+                        <img src={img} alt={`Skill ${index + 1}`} />
+                      </div>
+                    ))}
+                  </Carousel>
+                ) : (
+                  <RollingGallery autoPlay={true} pauseOnHover={true} images={skillImages} />
+                )}
               </div>
             </Col>
           </Row>

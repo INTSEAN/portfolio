@@ -793,3 +793,14 @@ footer button:hover::before {
   border-radius: 15px;
   font-size: 12px;
 }
+
+/* Add this to your CSS file */
+.magnet-lines-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensures it is behind other content */
+  overflow: hidden; /* Ensures it doesn't affect layout */
+}

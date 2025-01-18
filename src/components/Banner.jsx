@@ -4,6 +4,7 @@ import TrackVisibility from "react-on-screen";
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import headerImg from "../assets/img/header-img.svg";
+import Waves from "./Waves";
 
 function Banner() {
   const [loopNum, setLoopNum] = useState(0);
@@ -53,7 +54,8 @@ function Banner() {
 
   return (
     <>
-      <section className="banner" id="home">
+      
+      <section className="banner" id="home" style={{ position: 'relative', overflow: 'hidden' }}>
         <Container>
           <Row className="align-items-center">
             <Col xs={12} md={6} xl={7}>
@@ -87,7 +89,7 @@ function Banner() {
                     <button onClick={scrollToContact}>
                       Let's connect
                       <i
-                        class="fa-solid fa-circle-arrow-right"
+                        className="fa-solid fa-circle-arrow-right"
                         style={{
                           color: "#6f4cd6",
                           paddingLeft: "10px",
@@ -104,6 +106,7 @@ function Banner() {
             </Col>
           </Row>
         </Container>
+
       </section>
     </>
   );
