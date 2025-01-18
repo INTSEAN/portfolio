@@ -65,7 +65,7 @@ function Contact() {
             <img src={contactImg} alt="Contact Us" />
           </Col>
           <Col md={6}>
-            <h2>Get in Touch via Mail</h2>
+            <h2>Hiring? Let's Talk</h2>
 
             {/* Form Starts Here */}
             <form action="https://api.web3forms.com/submit" method="POST">
