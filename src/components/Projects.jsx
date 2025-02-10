@@ -12,6 +12,7 @@ import bridged from "../assets/img/bridged.png";
 import dALGOna from "../assets/img/dalgona.png";
 import yaqin from "../assets/img/yaqin.jpg";
 import aitutor from "../assets/img/aitutor.jpg";
+import africaai from "../assets/img/landing-africa.png";
 
 import ShinyText from "./ShinyText";
 import BlobCursor from "./BlobCursor";
@@ -31,6 +32,15 @@ function Projects() {
   const [hoveredProject, setHoveredProject] = useState(null);
 
   const projects = [
+    {
+      title: "Africa AI",
+      description: "Multimodal AI platform",
+      imgUrl: africaai,
+      link: "https://intsean.github.io/hugo-mock-landing-page/",
+      category: "web",
+      technologies: ["Golang", "Node.js", "Hugo", "SaSS", "Bootstrap"],
+      date: "2025",
+    },
     {
       title: "Yaqin",
       description: "International Agricultural Export 🌍",
@@ -138,9 +148,7 @@ function Projects() {
                           <Nav.Link eventKey="first">All</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="second">
-                            Web Dev
-                          </Nav.Link>
+                          <Nav.Link eventKey="second">Web Dev</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                           <Nav.Link eventKey="third">AI & ML</Nav.Link>
