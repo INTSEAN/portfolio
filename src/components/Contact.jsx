@@ -61,9 +61,6 @@ function Contact() {
     <section className="contact" id="contact">
       <Container>
         <Row>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdCAqRl5_hyh9GosFqasbo7dl54PbA5Nqmu1vZlVgh2hErbgQ/viewform?embedded=true" width="300" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-        </Row>
-        <Row>
           <Col md={6}>
             <img src={contactImg} alt="Contact Us" />
           </Col>
