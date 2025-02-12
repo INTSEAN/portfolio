@@ -54,7 +54,7 @@ npm start
 The website should now be running locally at http://localhost:3000.
 
 📧 Contact
-Feel free to reach out to me via the contact form on my website: https://seandonovan.app.netlify/ or connect with me on LinkedIn: https://www.linkedin.com/seandonovan-upenn/
+Feel free to reach out to me via the contact form on my website: https://seandonovan.tech/ or connect with me on LinkedIn: https://www.linkedin.com/in/seandonovan-upenn/
 
 📝 License
 This project is open-source and available under the MIT License.
