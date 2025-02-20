@@ -54,8 +54,11 @@ function Banner() {
 
   return (
     <>
-      
-      <section className="banner" id="home" style={{ position: 'relative', overflow: 'hidden' }}>
+      <section
+        className="banner"
+        id="home"
+        style={{ position: "relative", overflow: "hidden" }}
+      >
         <Container>
           <Row className="align-items-center">
             <Col xs={12} md={6} xl={7}>
@@ -106,7 +109,6 @@ function Banner() {
             </Col>
           </Row>
         </Container>
-
       </section>
     </>
   );
