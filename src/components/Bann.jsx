@@ -5,6 +5,7 @@ const Bann = () => {
   const [isVisible, setVisible] = useState(true);
   const [isFading, setFading] = useState(false);
   const [isMounted, setMounted] = useState(false);
+  const [isBlurred, setBlur] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -16,6 +17,19 @@ const Bann = () => {
       setVisible(false);
       setFading(false);
     }, 500); // Matches the CSS transition duration
+  };
+
+  const handleButtonClick = () => {
+    // Toggle blur state for main content
+    setBlur(true);
+
+    // Trigger the Voiceflow chat widget to open
+    if (window.voiceflow && window.voiceflow.chat) {
+      window.voiceflow.chat.open(); // Opens the widget
+    } else {
+      console.error("Voiceflow chat widget not initialized yet.");
+      // Optional: Add fallback logic, e.g., retry after a short delay
+    }
   };
 
   if (!isVisible) {
@@ -43,7 +57,10 @@ const Bann = () => {
             </div>
           </div>
         </div>
-        <button class="bann-button bann-button-item">
+        <button
+          class="bann-button bann-button-item"
+          onClick={handleButtonClick}
+        >
           <span class="bann-button-bg">
             <span class="bann-button-bg-layers">
               <span class="bann-button-bg-layer bann-button-bg-layer-1 -purple"></span>

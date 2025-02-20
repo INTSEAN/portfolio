@@ -270,3 +270,16 @@
   transition-delay: 0.2s;
   transform: scale(1);
 }
+
+
+/* Ensure the button wrapper is not affected by blur */
+.button-wrapper {
+  position: relative; /* Adjust to absolute/fixed if needed for layout */
+  z-index: 10; /* Above blurred content, below widget if it overlaps */
+}
+
+/* Blur effect for the main content */
+.bann-container.blurred {
+  filter: blur(5px);
+  transition: filter 0.3s ease-in-out; /* Smooth transition */
+}
