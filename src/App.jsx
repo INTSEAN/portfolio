@@ -8,9 +8,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Footer from "./components/Footer";
 import Contact from "./components/Contact";
+import Bann from "./components/Bann";
 function App() {
   return (
     <>
+      <Bann />
       <NavBar />
       <Banner />
       <Skills />
