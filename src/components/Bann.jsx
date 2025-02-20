@@ -43,7 +43,19 @@ const Bann = () => {
             </div>
           </div>
         </div>
-        <button className="bann-button">Try it Below</button>
+        <button class="bann-button bann-button-item">
+          <span class="bann-button-bg">
+            <span class="bann-button-bg-layers">
+              <span class="bann-button-bg-layer bann-button-bg-layer-1 -purple"></span>
+              <span class="bann-button-bg-layer bann-button-bg-layer-2 -turquoise"></span>
+              <span class="bann-button-bg-layer bann-button-bg-layer-3 -yellow"></span>
+            </span>
+          </span>
+          <span class="bann-button-inner">
+            <span class="bann-button-inner-static">Try Digital Sean</span>
+            <span class="bann-button-inner-hover">Powered By AI</span>
+          </span>
+        </button>
       </div>
     </div>
   );
