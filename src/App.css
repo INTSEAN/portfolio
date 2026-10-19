@@ -2,18 +2,21 @@
   font-family: Centra;
   src: url('./assets/font/CentraNo2-Bold.ttf');
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
   font-family: Centra;
   src: url('./assets/font/CentraNo2-Book.ttf');
-  font-weight: 500;
+  font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
   font-family: Centra;
   src: url('./assets/font/CentraNo2-Medium.ttf');
-  font-weight: 400;
+  font-weight: 500;
+  font-display: swap;
 }
 
 /* Default CSS */
@@ -804,9 +807,20 @@ footer button:hover::before {
   z-index: -1; /* Ensures it is behind other content */
   overflow: hidden; /* Ensures it doesn't affect layout */
 }
-.gallery-loading { position: fixed; inset: 0; display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: center; background: #080e10; color: #dce5c2; font-size: 24px; }
-.gallery-loading span { font: 9px monospace; letter-spacing: .18em; }
+.gallery-loading { min-height: 700px; display: grid; place-items: center; color: #bfb6cd; font-size: 15px; }
+.gallery-page { background: #121212; }
+nav.navbar.gallery-page-nav, nav.navbar.gallery-page-nav.scrolled { position: sticky; padding: 18px 0; background: #121212; border-bottom: 1px solid #ffffff12; }
+nav.navbar.gallery-page-nav a.navbar-brand { width: 72px; }
+nav.navbar.gallery-page-nav .navbar-nav .nav-link.navbar-link { font-size: 16px; letter-spacing: .02em; padding: 0 22px; }
+.footer.footer-compact { border-top: 1px solid #ffffff12; padding: 32px 0; background-color: #121212; }
+.footer.footer-compact .row { justify-content: space-between; }
+.footer.footer-compact .social-icon { margin: 0; padding: 0; }
+.footer.footer-compact p { padding: 0; font-size: 14px; line-height: 1.5; letter-spacing: 0; color: #b9b3c3; }
+.footer-compact-content { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+@media (max-width: 991px) { nav.navbar.gallery-page-nav .navbar-nav .nav-link.navbar-link { padding: 12px 0; } }
+@media (max-width: 600px) { .footer.footer-compact { padding: 28px 12px; } .footer-compact-content { flex-direction: column; gap: 20px; } }
 .classic-connect { border: 1px solid #9f9f9f; padding: 14px 23px; color: white; margin-left: 18px; font-size: 16px; }
+nav.navbar .classic-connect { color: #f5f2fa; }
 nav.navbar .immersive-link > span { color: #d5dba8; }
 @media (max-width: 991px) { nav.navbar:not(.immersive-nav) .navbar-collapse { padding: 20px; background: #121212f5; } nav.navbar:not(.immersive-nav) .nav-link.navbar-link { padding: 12px 0; } }
 .in-immersive #voiceflow-chat { display: none !important; }

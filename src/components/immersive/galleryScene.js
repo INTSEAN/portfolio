@@ -142,15 +142,13 @@ export function createGalleryScene(host, projects, onSelect, onReady, onUnavaila
       context.fillStyle = "#1a2425"; context.fillRect(0, 0, 1280, 30);
       context.fillStyle = "#758079";
       [18, 32, 46].forEach(x => { context.beginPath(); context.arc(x, 15, 3, 0, Math.PI * 2); context.fill(); });
-      context.font = "12px monospace"; context.fillText("SEAN DONOVAN / " + project.date, 1010, 19);
       context.fillStyle = "#101719"; context.fillRect(0, 646, 1280, 58);
-      context.fillStyle = "#e4e7df"; context.font = "22px sans-serif"; context.fillText(project.title, 24, 683);
-      context.fillStyle = "#8f9b94"; context.font = "14px monospace";
-      context.fillText(project.category === "ai" ? "AI & LEARNING" : "DIGITAL PRODUCT", 1020, 681);
+      context.fillStyle = "#eee9f6"; context.font = "500 28px Centra, sans-serif"; context.fillText(project.title, 24, 683);
       texture.needsUpdate = true;
     };
     draw();
     const image = new Image(); image.onload = () => { if (!disposed) draw(image); }; image.src = project.imgUrl;
+    document.fonts.ready.then(() => { if (!disposed) draw(image.complete && image.naturalWidth ? image : null); });
     const mesh = new THREE.Mesh(tileGeometry, track(new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide, toneMapped: false })));
     mesh.position.copy(home); mesh.rotation.y = -theta; mesh.userData.index = index;
     cards.push({ mesh, home, theta }); scene.add(mesh);
@@ -193,8 +191,9 @@ export function createGalleryScene(host, projects, onSelect, onReady, onUnavaila
   };
   const cancel = () => { dragging = false; moved = false; host.style.cursor = "grab"; };
   const wheel = event => {
+    if (Math.abs(event.deltaY) >= Math.abs(event.deltaX)) return;
     event.preventDefault();
-    pan = THREE.MathUtils.clamp(pan + (event.deltaX || event.deltaY) * 0.00035, -0.4, 0.4);
+    pan = THREE.MathUtils.clamp(pan + event.deltaX * 0.00035, -0.4, 0.4);
   };
   const lost = event => { event.preventDefault(); onUnavailable(); };
   const element = renderer.domElement;
@@ -209,14 +208,17 @@ export function createGalleryScene(host, projects, onSelect, onReady, onUnavaila
     const dt = Math.min(clock.getDelta(), 0.05);
     if (!state.paused && !state.reducedMotion) elapsed += dt;
     const damping = state.reducedMotion ? 1 : 1 - Math.exp(-8 * dt);
+    const visibleHeight = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * (camera.position.z - 1.6);
+    const visibleWidth = visibleHeight * camera.aspect;
+    const focusScale = Math.min(1.52, visibleWidth * 0.88 / 7.45, visibleHeight * 0.78 / 4.1);
+    const focusOffset = Math.min(1.8, Math.max(0, (visibleWidth * 0.88 - 7.45 * focusScale) / 2));
+    selectedPosition.set(-focusOffset, camera.aspect < 1 ? 1.8 : 0.9, 1.6);
     cards.forEach((card, index) => {
       const focused = state.selected === index;
-      selectedPosition.set(camera.aspect < 1 ? 0 : -1.8, camera.aspect < 1 ? 1.8 : 0.65, 1.6);
       target.copy(focused ? selectedPosition : card.home);
       card.mesh.position.lerp(target, damping);
       card.mesh.rotation.y = THREE.MathUtils.lerp(card.mesh.rotation.y, focused ? 0 : -card.theta, damping);
-      const focusWidth = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * (camera.position.z - selectedPosition.z) * camera.aspect * 0.88;
-      const size = focused ? Math.min(1.52, focusWidth / 7.45) : hover === index && state.selected === null ? 1.025 : 1;
+      const size = focused ? focusScale : hover === index && state.selected === null ? 1.025 : 1;
       card.mesh.scale.setScalar(THREE.MathUtils.lerp(card.mesh.scale.x, size, damping));
       color.set(state.selected !== null && !focused ? 0x515966 : 0xffffff); card.mesh.material.color.lerp(color, damping);
     });

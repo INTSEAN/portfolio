@@ -31,10 +31,13 @@ export default function App() {
       {!immersive && <Bann />}
       <NavBar immersive={immersive} />
       {immersive ? (
-        <Suspense fallback={<main className="gallery-loading" role="status">Opening the gallery<span>SEAN DONOVAN / SELECTED WORK</span></main>}>
-          <Immersive />
-        </Suspense>
-      ) : <><Banner /><Skills /><Projects /><Contact /><Footer /></>}
+        <main className="gallery-page">
+          <Suspense fallback={<section className="gallery-loading" role="status">Loading gallery…</section>}>
+            <Immersive />
+          </Suspense>
+        </main>
+      ) : <><Banner /><Skills /><Projects /><Contact /></>}
+      <Footer compact={immersive} />
     </>
   );
 }

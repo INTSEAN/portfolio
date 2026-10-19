@@ -24,16 +24,13 @@ export default function Immersive() {
   const isIndex = view === "index" || unavailable;
 
   useEffect(() => {
-    const bodyOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
     document.documentElement.classList.add("in-immersive");
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const onMotion = event => setReducedMotion(event.matches);
-    const onFullscreen = () => setFullscreen(Boolean(document.fullscreenElement));
+    const onFullscreen = () => setFullscreen(document.fullscreenElement === root.current);
     media.addEventListener("change", onMotion);
     document.addEventListener("fullscreenchange", onFullscreen);
     return () => {
-      document.body.style.overflow = bodyOverflow;
       document.documentElement.classList.remove("in-immersive");
       media.removeEventListener("change", onMotion);
       document.removeEventListener("fullscreenchange", onFullscreen);
@@ -43,6 +40,7 @@ export default function Immersive() {
   useEffect(() => {
     if (isIndex) return;
     let scene;
+    setReady(false);
     try {
       scene = createGalleryScene(host.current, projects, setSelected, () => setReady(true), () => setUnavailable(true));
       controller.current = scene;
@@ -76,65 +74,61 @@ export default function Immersive() {
     setFullscreenError("");
     try {
       if (document.fullscreenElement) await document.exitFullscreen();
-      else await document.documentElement.requestFullscreen();
+      else await root.current.requestFullscreen();
     } catch { setFullscreenError("Fullscreen isn’t available in this browser."); }
   };
 
   return (
-    <main ref={root} className={`immersive ${focused ? "has-focus" : ""} ${isIndex ? "index-view" : ""}`} id="immersive" onKeyDown={onKeys} aria-label="Immersive project gallery">
-      <div className="gallery-atmosphere" aria-hidden="true" />
-      <header className="gallery-intro">
-        <div className="gallery-eyebrow"><span /> A SPACE FOR IDEAS</div>
-        <h1>{focused ? focused.title : <>A different<br /><em>perspective.</em></>}</h1>
-        <p>{focused ? focused.description.replace(/[^\p{L}\p{N}\p{P}\p{Z}]/gu, "").trim() : "A collection of things I’ve imagined, designed, and built."}</p>
+    <section ref={root} className={`immersive ${focused ? "has-focus" : ""} ${isIndex ? "index-view" : ""}`} id="immersive" onKeyDown={onKeys} aria-labelledby="gallery-title">
+      <header className="gallery-header">
+        <h1 id="gallery-title">Selected work<span aria-hidden="true">.</span></h1>
+        <div className="gallery-view-switch" role="group" aria-label="Gallery view">
+          <button ref={overviewButton} className={!isIndex ? "active" : ""} aria-pressed={!isIndex} disabled={unavailable} onClick={() => { setView("space"); setSelected(null); }}>Explore</button>
+          <button ref={indexButton} className={isIndex ? "active" : ""} aria-pressed={isIndex} onClick={() => { setView("index"); setSelected(null); }}>Index</button>
+        </div>
       </header>
-      <div className="gallery-coordinate" aria-hidden="true"><span>SEAN DONOVAN</span><span>PHILADELPHIA · EARTH</span><span className="gallery-coordinate-line" /><span>40° N / 75° W</span></div>
 
-      {!isIndex && <div ref={host} className="gallery-canvas" aria-label="Drag to look around the spatial gallery. Use the project index or arrow controls to select a project." />}
-      {!ready && !isIndex && <div className="gallery-preparing" role="status">Assembling your surroundings<span /></div>}
-      {isIndex && (
-        <section className="gallery-index" aria-label="Project index">
-          {unavailable && <p className="gallery-fallback-note">Explore the same collection in the project index.</p>}
-          {projects.map((project, index) => (
-            <button className={`index-card ${selected === index ? "selected" : ""}`} key={project.title} onClick={() => setSelected(index)} aria-label={`Explore ${project.title}`}>
-              <div className="index-card-image"><img src={project.imgUrl} alt={`${project.title} website preview`} loading="lazy" /></div>
-              <div><span>{formatNumber(index)} / {project.date}</span><h2>{project.title}</h2><span aria-hidden="true">↗</span></div>
-            </button>
-          ))}
-        </section>
-      )}
+      <div className="gallery-room">
+        <div className="gallery-atmosphere" aria-hidden="true" />
+        {!isIndex && <div ref={host} className="gallery-canvas" aria-label="Drag horizontally to look around. Use the index or arrow controls to select a project." />}
+        {!ready && !isIndex && <div className="gallery-preparing" role="status">Loading gallery…</div>}
+        {isIndex && (
+          <section className="gallery-index" aria-label="Project index">
+            {unavailable && <p className="gallery-fallback-note">3D isn’t available. Explore the project index.</p>}
+            {projects.map((project, index) => (
+              <button className={`index-card ${selected === index ? "selected" : ""}`} key={project.title} onClick={() => setSelected(index)} aria-label={`Explore ${project.title}`}>
+                <div className="index-card-image"><img src={project.imgUrl} alt={`${project.title} website preview`} loading="lazy" /></div>
+                <div className="index-card-caption"><h2>{project.title}</h2><span>{project.date}</span></div>
+              </button>
+            ))}
+          </section>
+        )}
 
-      <div className="gallery-side-note" aria-hidden="true">INDEPENDENT MIND. SHARED POSSIBILITIES.</div>
-      <div className="gallery-floormark" aria-hidden="true">THOUGHTFULLY BUILT.<br /><span>OPEN TO WHAT’S NEXT.</span></div>
-
-      {focused && (
-        <section className="gallery-project-detail" aria-labelledby="focused-project-title">
-          <div className="detail-topline"><span>PROJECT {formatNumber(selected)} / 09</span><button ref={closeButton} onClick={reset} aria-label="Close project details">×</button></div>
-          <h2 id="focused-project-title">{focused.title}</h2>
-          <p>{focused.description}</p>
-          <div className="detail-technologies">{focused.technologies.map(tech => <span key={tech}>{tech}</span>)}</div>
-          <a href={focused.link} target="_blank" rel="noopener noreferrer">{focused.link.includes("github.com") ? "View repository" : "Visit project"}<span aria-hidden="true">↗</span></a>
-        </section>
-      )}
-      <p className="gallery-announcement" aria-live="polite">{focused ? `${focused.title}. ${focused.description}. Project ${selected + 1} of ${projects.length}.` : "Gallery overview. Nine projects to explore."}</p>
+        {focused && (
+          <section className="gallery-project-detail" aria-labelledby="focused-project-title">
+            <div className="detail-topline"><span>{focused.date}</span><button ref={closeButton} onClick={reset} aria-label="Close project details">×</button></div>
+            <h2 id="focused-project-title">{focused.title}</h2>
+            <p>{focused.description.replace(/[^\p{L}\p{N}\p{P}\p{Z}]/gu, "").trim()}</p>
+            <div className="detail-technologies">{focused.technologies.map(tech => <span key={tech}>{tech}</span>)}</div>
+            <a href={focused.link} target="_blank" rel="noopener noreferrer">{focused.link.includes("github.com") ? "View repository" : "Visit project"}<span aria-hidden="true">↗</span></a>
+          </section>
+        )}
+      </div>
 
       <div className="gallery-controls" role="group" aria-label="Gallery controls">
-        <div className="gallery-count"><span className="live-dot" />SELECTED WORK <span className="gallery-count-divider">/</span> {focused ? formatNumber(selected) : "09"}<span className="gallery-count-sub">{focused ? "OF 09 PROJECTS" : "PROJECTS & EXPLORATIONS"}</span></div>
-        <div className="gallery-control-center">
-          <div className="gallery-view-switch" role="group" aria-label="Gallery view">
-            <button ref={overviewButton} className={!isIndex ? "active" : ""} aria-pressed={!isIndex} disabled={unavailable} onClick={() => { setView("space"); setSelected(null); }}>◈ <span>Explore</span></button>
-            <button ref={indexButton} className={isIndex ? "active" : ""} aria-pressed={isIndex} onClick={() => { setView("index"); setSelected(null); }}>☷ <span>Index</span></button>
-          </div>
-          <div className="gallery-step-controls"><button onClick={() => step(-1)} aria-label="Previous project">←</button><span>{focused ? `${formatNumber(selected)} / 09` : "DRAG TO EXPLORE"}</span><button onClick={() => step(1)} aria-label="Next project">→</button></div>
+        {!isIndex && <p className="gallery-hint">Drag to explore</p>}
+        <div className="gallery-step-controls">
+          <button onClick={() => step(-1)} aria-label="Previous project">←</button>
+          <span>{focused ? `${formatNumber(selected)} / ${String(projects.length).padStart(2, "0")}` : `${String(projects.length).padStart(2, "0")} projects`}</span>
+          <button onClick={() => step(1)} aria-label="Next project">→</button>
         </div>
         <div className="gallery-utilities">
-          <button className="gallery-motion" onClick={() => setPaused(value => !value)} aria-pressed={paused || reducedMotion} aria-label={paused ? "Resume ambient motion" : "Pause ambient motion"} disabled={reducedMotion || isIndex}>{paused || reducedMotion ? "▷" : "Ⅱ"}</button>
-          <button onClick={toggleFullscreen} aria-label={fullscreen ? "Exit full screen" : "Enter full screen"} className="gallery-fullscreen">{fullscreen ? "↙" : "⛶"}</button>
-          <a href="#projects" className="gallery-exit" aria-label="Return to classic portfolio">Exit <span aria-hidden="true">↗</span></a>
+          <button onClick={() => setPaused(value => !value)} aria-pressed={paused || reducedMotion} aria-label={paused ? "Resume ambient motion" : "Pause ambient motion"} disabled={reducedMotion || isIndex}>{paused || reducedMotion ? "▷" : "Ⅱ"}</button>
+          <button onClick={toggleFullscreen} aria-label={fullscreen ? "Exit full screen" : "Enter full screen"}>{fullscreen ? "↙" : "⛶"}</button>
         </div>
       </div>
       {fullscreenError && <p className="gallery-fullscreen-error" role="status">{fullscreenError}</p>}
-      <div className="gallery-keyboard-help">← → TO DISCOVER <span>·</span> ESC TO STEP BACK</div>
-    </main>
+      <p className="gallery-announcement" aria-live="polite">{focused ? `${focused.title}. ${focused.description}. Project ${selected + 1} of ${projects.length}.` : "Gallery overview. Nine projects to explore."}</p>
+    </section>
   );
 }

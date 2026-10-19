@@ -19,10 +19,10 @@ export default function NavBar({ immersive = false }) {
     return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("hashchange", onHash); };
   }, []);
   return (
-    <Navbar expand="lg" expanded={expanded} onToggle={setExpanded} className={`${scrolled ? "scrolled" : ""} ${immersive ? "immersive-nav" : ""}`} aria-label="Main navigation">
+    <Navbar expand="lg" expanded={expanded} onToggle={setExpanded} className={`${scrolled ? "scrolled" : ""} ${immersive ? "gallery-page-nav" : ""}`} aria-label="Main navigation">
       <Container>
         <Navbar.Brand href="#home" className="navbar-brand" aria-label="Sean Donovan home">
-          {immersive ? <span className="gallery-wordmark">sd<span>®</span></span> : <img src={logo} alt="Sean Donovan" />}
+          <img src={logo} alt="Sean Donovan" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" aria-label="Toggle navigation"><span className="navbar-toggler-icon" /></Navbar.Toggle>
         <Navbar.Collapse id="main-navbar">
@@ -33,15 +33,13 @@ export default function NavBar({ immersive = false }) {
               </Nav.Link>
             ))}
           </Nav>
-          {immersive ? <a className="gallery-connect" href="mailto:donovans064@gmail.com">Let’s connect <span aria-hidden="true">↗</span></a> : (
-            <span className="navbar-text">
+          <span className="navbar-text">
               <div className="social-icon">
                 <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/seandonovan-upenn/" aria-label="LinkedIn"><img src={linkedin} alt="" /></a>
                 <a target="_blank" rel="noreferrer" href="https://github.com/INTSEAN/" aria-label="GitHub"><img src={github} alt="" /></a>
               </div>
               <a className="classic-connect" href="#contact">Let’s connect ↗</a>
-            </span>
-          )}
+          </span>
         </Navbar.Collapse>
       </Container>
     </Navbar>
