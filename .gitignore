@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Local credentials must never enter source control or the Vite client bundle.
+.env
+.env.*
+!.env.example
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

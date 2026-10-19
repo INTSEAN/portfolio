@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Container, Row, Col, Nav, Tab } from "react-bootstrap";
 import ProjectCard from "./ProjectCard";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
 import colorSharpTwo from "../assets/img/color-sharp2.png";
-import wordLingo from "../assets/img/wordlingo.png";
-import pennGpt from "../assets/img/penngpt.png";
-import gymJam from "../assets/img/gymjam.png";
-import hackmate from "../assets/img/hackmate.png";
-import bridged from "../assets/img/bridged.png";
-import dALGOna from "../assets/img/dalgona.png";
-import yaqin from "../assets/img/yaqin.jpg";
-import aitutor from "../assets/img/aitutor.jpg";
-import africaai from "../assets/img/landing-africa.png";
+
+import { projects } from "../data/projects";
 
 import ShinyText from "./ShinyText";
 import BlobCursor from "./BlobCursor";
@@ -30,90 +23,6 @@ function Projects() {
   }, []);
 
   const [hoveredProject, setHoveredProject] = useState(null);
-
-  const projects = [
-    {
-      title: "Africa AI",
-      description: "Multimodal AI platform",
-      imgUrl: africaai,
-      link: "https://intsean.github.io/hugo-mock-landing-page/",
-      category: "web",
-      technologies: ["Golang", "Node.js", "Hugo", "SaSS", "Bootstrap"],
-      date: "2025",
-    },
-    {
-      title: "Yaqin",
-      description: "International Agricultural Export 🌍",
-      imgUrl: yaqin,
-      link: "https://yaqvent.netlify.app/",
-      category: "web",
-      technologies: ["Typescript", "React", "Node.js"],
-      date: "2024",
-    },
-    {
-      title: "Bridged Consultants",
-      description: "Medical Consulting Startup 🏥",
-      imgUrl: bridged,
-      link: "https://bridgedconsultants.com",
-      category: "web",
-      technologies: ["React", "Node.js"],
-      date: "2024",
-    },
-    {
-      title: "Gym Jam",
-      description: "Fitness + Music👟",
-      imgUrl: gymJam,
-      link: "https://gymjam.netlify.app/",
-      category: "web",
-      technologies: ["React", "Node.js"],
-      date: "2024",
-    },
-    {
-      title: "Word Lingo",
-      description: "Machine Learning + Linguistics 💻",
-      imgUrl: wordLingo,
-      link: "https://wordlingo.netlify.app/",
-      category: "ai",
-      technologies: ["React", "Node.js"],
-      date: "2024",
-    },
-    {
-      title: "dALGOna",
-      description: "SquidGame Inspired Coding Prep 🧠",
-      imgUrl: dALGOna,
-      link: "https://dalgorithm.netlify.app/",
-      category: "web",
-      technologies: ["React", "Node.js", "Tailwind"],
-      date: "2025",
-    },
-    {
-      title: "Hack Mate",
-      description: "Social Media + Hackathons",
-      imgUrl: hackmate,
-      link: "https://github.com/Namit2111/hackMate",
-      category: "web",
-      technologies: ["React", "Node.js"],
-      date: "2024",
-    },
-    {
-      title: "AI Tutor",
-      description: "AI for Education 🤖",
-      imgUrl: aitutor,
-      link: "https://tutorize.netlify.app/",
-      category: "ai",
-      technologies: ["React", "Node.js"],
-      date: "2024",
-    },
-    {
-      title: "Penn GPT",
-      description: "AI for Education 🤖",
-      imgUrl: pennGpt,
-      link: "https://penngpt.netlify.app/",
-      category: "ai",
-      technologies: ["React", "Node.js"],
-      date: "2024",
-    },
-  ];
 
   return (
     <>

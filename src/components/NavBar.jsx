@@ -1,115 +1,50 @@
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Container from "react-bootstrap/Container";
-import React from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../assets/img/logo-solid.svg";
-import { useState, useEffect } from "react";
-import mail from "../assets/img/envelope-regular.svg";
 import linkedin from "../assets/img/linkedin-brands-solid.svg";
 import github from "../assets/img/github-brands-solid.svg";
-import TrueFocus from "./TrueFocus";
 
-function NavBar() {
-  const [activeLink, setActiveLink] = useState("home");
-  const [scroll, setScroll] = useState(false);
-
+export default function NavBar({ immersive = false }) {
+  const [active, setActive] = useState(window.location.hash.slice(1) || "home");
+  const [scrolled, setScrolled] = useState(window.scrollY > 50);
+  const [expanded, setExpanded] = useState(false);
   useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > 50) {
-        setScroll(true);
-      } else {
-        setScroll(false);
-      }
-    };
-
-    window.addEventListener("scroll", onScroll);
-
-    return () => window.removeEventListener("scroll", onScroll);
-  });
-
-  const onUpdateActiveLink = (value) => {
-    setActiveLink(value);
-  };
-
-  function handleEmail() {
-    window.location.href = "mailto:donovans064@gmail.com";
-  }
-
-  const scrollToContact = () => {
-    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-  };
-
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onHash = () => { setActive(window.location.hash.slice(1) || "home"); setExpanded(false); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("hashchange", onHash);
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("hashchange", onHash); };
+  }, []);
   return (
-    <Navbar expand="lg" className={scroll ? "Scrolled" : ""}>
+    <Navbar expand="lg" expanded={expanded} onToggle={setExpanded} className={`${scrolled ? "scrolled" : ""} ${immersive ? "immersive-nav" : ""}`} aria-label="Main navigation">
       <Container>
-        <Navbar.Brand href="#home" className="navbar-brand">
-          <a href="https://seandonovan.netlify.app/">
-            <img src={logo} alt="logo" />
-          </a>
+        <Navbar.Brand href="#home" className="navbar-brand" aria-label="Sean Donovan home">
+          {immersive ? <span className="gallery-wordmark">sd<span>®</span></span> : <img src={logo} alt="Sean Donovan" />}
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav">
-          <i className="fa-solid fa-bars" style={{ color: "#FFD43B" }}></i>
-        </Navbar.Toggle>
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto" style={{ color: "white" }}>
-            <Nav.Link
-              href="#home"
-              className={
-                activeLink === "home" ? "active navbar-link" : "navbar-link"
-              }
-              onClick={() => onUpdateActiveLink("home")}
-            >
-              Home
-            </Nav.Link>
-            <Nav.Link
-              href="#skills"
-              className={
-                activeLink === "skills" ? "active navbar-link" : "navbar-link"
-              }
-              onClick={() => onUpdateActiveLink("skills")}
-            >
-              Skills
-            </Nav.Link>
-            <Nav.Link
-              href="#projects"
-              className={
-                activeLink === "projects" ? "active navbar-link" : "navbar-link"
-              }
-              onClick={() => onUpdateActiveLink("projects")}
-            >
-              Projects
-            </Nav.Link>
+        <Navbar.Toggle aria-controls="main-navbar" aria-label="Toggle navigation"><span className="navbar-toggler-icon" /></Navbar.Toggle>
+        <Navbar.Collapse id="main-navbar">
+          <Nav className="me-auto">
+            {["home", "skills", "projects", "immersive"].map(item => (
+              <Nav.Link key={item} href={`#${item}`} onClick={() => setExpanded(false)} aria-current={active === item ? "page" : undefined} className={`navbar-link ${active === item ? "active" : ""} ${item === "immersive" ? "immersive-link" : ""}`}>
+                {item === "immersive" && <span aria-hidden="true">✳ </span>}{item[0].toUpperCase() + item.slice(1)}
+              </Nav.Link>
+            ))}
           </Nav>
-          <span className="navbar-text">
-            <div className="social-icon">
-              <a
-                target="blank"
-                href="https://www.linkedin.com/in/seandonovan-upenn/"
-              >
-                <img src={linkedin} alt="GitHub Icon" />
-              </a>
-              <a target="blank" href="https://www.github.com/INTSEAN/">
-                <img src={github} alt="GitHub Icon" />
-              </a>
-              <a target="blank" onClick={scrollToContact}>
-                <img src={mail} alt="Mail Icom" />
-              </a>
-            </div>
-            <button className="#footer" onClick={scrollToContact}>
-            <TrueFocus 
-sentence="Let's connect"
-manualMode={false}
-blurAmount={5}
-borderColor="purple"
-animationDuration={2}
-pauseBetweenAnimations={1}
-/>
-            </button>
-          </span>
+          {immersive ? <a className="gallery-connect" href="mailto:donovans064@gmail.com">Let’s connect <span aria-hidden="true">↗</span></a> : (
+            <span className="navbar-text">
+              <div className="social-icon">
+                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/seandonovan-upenn/" aria-label="LinkedIn"><img src={linkedin} alt="" /></a>
+                <a target="_blank" rel="noreferrer" href="https://github.com/INTSEAN/" aria-label="GitHub"><img src={github} alt="" /></a>
+              </div>
+              <a className="classic-connect" href="#contact">Let’s connect ↗</a>
+            </span>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
-
-export default NavBar;
+NavBar.propTypes = { immersive: PropTypes.bool };

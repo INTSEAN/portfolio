@@ -2,9 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/assets/react.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sean Donovan</title>
+    <title>Sean Donovan — Software Engineer & Builder</title>
+    <meta name="description" content="Selected software, AI, and digital product work by Sean Donovan. Explore the portfolio or step inside an immersive project gallery." />
+    <meta name="theme-color" content="#080e10" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -18,18 +20,25 @@
     <script type="module" src="/src/main.jsx"></script>
     <script type="text/javascript">
       (function (d, t) {
-        var v = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-        v.onload = function () {
-          window.voiceflow.chat.load({
-            verify: { projectID: "659b7cd638fe1d2494e95982" },
-            url: "https://general-runtime.voiceflow.com",
-            versionID: "production",
-          });
-        };
-        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-        v.type = "text/javascript";
-        s.parentNode.insertBefore(v, s);
+        var started = false;
+        function loadChat() {
+          if (started || window.location.hash === "#immersive") return;
+          started = true;
+          var v = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+          v.onload = function () {
+            window.voiceflow.chat.load({
+              verify: { projectID: "659b7cd638fe1d2494e95982" },
+              url: "https://general-runtime.voiceflow.com",
+              versionID: "production",
+            });
+          };
+          v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+          v.type = "text/javascript";
+          s.parentNode.insertBefore(v, s);
+        }
+        window.addEventListener("hashchange", loadChat);
+        loadChat();
       })(document, "script");
     </script>
   </body>
