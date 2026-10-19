@@ -824,3 +824,4 @@ nav.navbar .classic-connect { color: #f5f2fa; }
 nav.navbar .immersive-link > span { color: #d5dba8; }
 @media (max-width: 991px) { nav.navbar:not(.immersive-nav) .navbar-collapse { padding: 20px; background: #121212f5; } nav.navbar:not(.immersive-nav) .nav-link.navbar-link { padding: 12px 0; } }
 .in-immersive #voiceflow-chat { display: none !important; }
+@media (max-width: 991px) { nav.navbar .immersive-link { display: none; } }

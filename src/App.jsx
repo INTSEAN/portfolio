@@ -12,9 +12,15 @@ import "./App.css";
 const Immersive = lazy(() => import("./components/immersive/Immersive"));
 
 export default function App() {
-  const [immersive, setImmersive] = useState(() => window.location.hash === "#immersive");
+  const [immersive, setImmersive] = useState(() => window.location.hash === "#immersive" && window.matchMedia("(min-width: 992px)").matches);
   useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 992px)");
     const navigate = () => {
+      if (!desktop.matches && window.location.hash === "#immersive") {
+        setImmersive(false);
+        window.location.replace("#projects");
+        return;
+      }
       const next = window.location.hash === "#immersive";
       setImmersive(next);
       if (next) window.scrollTo(0, 0);
@@ -23,8 +29,16 @@ export default function App() {
         document.getElementById(id)?.scrollIntoView();
       });
     };
+    const onViewportChange = () => {
+      if (window.location.hash === "#immersive") navigate();
+    };
     window.addEventListener("hashchange", navigate);
-    return () => window.removeEventListener("hashchange", navigate);
+    desktop.addEventListener("change", onViewportChange);
+    onViewportChange();
+    return () => {
+      window.removeEventListener("hashchange", navigate);
+      desktop.removeEventListener("change", onViewportChange);
+    };
   }, []);
   return (
     <>
