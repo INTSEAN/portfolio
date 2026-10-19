@@ -1,285 +1,55 @@
-.bann {
-  background: linear-gradient(to right, #6200d3, #BA55D3);
-  color: white;
-  padding: 20px 0;
-  position: relative;
-  font-family: Helvetica, Arial, sans-serif;
+.digital-sean-banner {
+  background: linear-gradient(110deg, #251530, #2c1b40 65%, #22172c);
+  border-bottom: 1px solid #c8a7f226;
+  color: #f5f0fc;
+  font-family: Centra, sans-serif;
 }
-
-.bann-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
+.digital-sean-banner-inner {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 72px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
-
-.bann-heading {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  font-weight: 200;
-}
-
-.bann-description {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  font-weight: 100;
-}
-
-
-.bann-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  color: white;
-  background-color: transparent;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
+.digital-sean-banner-copy {
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.5;
 }
-
-
-
-/* From Uiverse.io by kennyotsu */ 
-.card {
-  /* color used to softly clip top and bottom of the .words container */
-  background-color: transparent;
-  padding: 1px 2px;
-  border: none;
-}
-
-.loader {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 20px;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 40px;
-  padding: 10px 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-radius: 8px;
-}
-
-.words {
-  overflow: hidden;
-  position: relative;
-}
-
-
-.words::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 20;
-}
-
-.word {
-  display: block;
-  height: 100%;
-  padding-left: 6px;
-  color: #ffffff;
-  font-weight: 100;
-  animation: spin_4991 5s infinite;
-}
-
-@keyframes spin_4991 {
-  10% {
-    -webkit-transform: translateY(-102%);
-    transform: translateY(-102%);
-  }
-
-  25% {
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
-  }
-
-  35% {
-    -webkit-transform: translateY(-202%);
-    transform: translateY(-202%);
-  }
-
-  50% {
-    -webkit-transform: translateY(-200%);
-    transform: translateY(-200%);
-  }
-
-  60% {
-    -webkit-transform: translateY(-302%);
-    transform: translateY(-302%);
-  }
-
-  75% {
-    -webkit-transform: translateY(-300%);
-    transform: translateY(-300%);
-  }
-
-  85% {
-    -webkit-transform: translateY(-402%);
-    transform: translateY(-402%);
-  }
-
-  100% {
-    -webkit-transform: translateY(-400%);
-    transform: translateY(-400%);
-  }
-}
-
-
-/* From Uiverse.io by OliverZeros, modified for specificity */
-
-.bann-button {
-  position: relative;
+.digital-sean-banner-copy strong { font-size: 15px; font-weight: 500; white-space: nowrap; }
+.digital-sean-banner-description { color: #c6b8d5; }
+.digital-sean-status-dot { flex: 0 0 6px; width: 6px; height: 6px; border-radius: 50%; background: #d7bbf4; }
+.digital-sean-banner-button {
   display: inline-flex;
-  height: 3.5rem;
   align-items: center;
-  border-radius: 9999px;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  font-size: 1.2rem;
-  font-weight: 100;
-  color: #000000;
-  letter-spacing: -0.06em;
-  -webkit-box-shadow:0px 0px 105px 6px rgba(255,255,255,1);
-  -moz-box-shadow: 0px 0px 105px 6px rgba(255,255,255,1);
-  box-shadow: 0px 0px 105px 6px rgba(255,255,255,1);
+  justify-content: center;
+  gap: 20px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #e3d3f34a;
+  border-radius: 7px;
+  color: #f5f0fc;
+  font: 500 14px/1.4 Centra, sans-serif;
+  white-space: nowrap;
+  transition: background 160ms ease, border-color 160ms ease;
 }
-
-.bann-button-item {
-  background-color: rgb(255, 255, 255);
-  color: #ffffff;
+.digital-sean-banner-button:focus-visible { outline: 2px solid #dec5f5; outline-offset: 4px; }
+.digital-sean-banner-button:active { transform: scale(.98); }
+.digital-sean-banner-status { padding-top: 0; padding-bottom: 14px; color: #d9cce6; font-size: 13px; line-height: 1.5; }
+.digital-sean-banner-status a { color: #f5f0fc; text-decoration: underline; text-underline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  .digital-sean-banner-button:hover { background: #ffffff0d; border-color: #e3d3f37a; }
 }
-
-.bann-button-item .bann-button-bg {
-  border-color: rgb(255, 255, 255);
-  border: 1px solid rgb(186, 201, 255);
-  background-color: rgba(51, 0, 255, 0.68);
+@media (max-width: 600px) {
+  .digital-sean-banner-inner { min-height: 68px; gap: 12px; padding-top: 10px; padding-bottom: 10px; }
+  .digital-sean-banner-description { display: none; }
+  .digital-sean-banner-copy { gap: 8px; }
+  .digital-sean-banner-button { gap: 12px; padding: 10px 12px; font-size: 13px; }
 }
-
-.bann-button-inner,
-.bann-button-inner-hover,
-.bann-button-inner-static {
-  pointer-events: none;
-  display: block;
-}
-
-.bann-button-inner {
-  position: relative;
-}
-
-.bann-button-inner-hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transform: translateY(70%);
-}
-
-.bann-button-bg {
-  overflow: hidden;
-  border-radius: 2rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: scale(1);
-  transition: transform 1.8s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.bann-button-bg,
-.bann-button-bg-layer,
-.bann-button-bg-layers {
-  display: block;
-}
-
-.bann-button-bg-layers {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  top: -60%;
-  aspect-ratio: 1 / 1;
-  width: max(200%, 10rem);
-}
-
-.bann-button-bg-layer {
-  border-radius: 9999px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: scale(0);
-}
-
-.bann-button-bg-layer.-purple {
-  background-color: rgba(163, 116, 255);
-}
-
-.bann-button-bg-layer.-turquoise {
-  background-color: rgba(23, 241, 209);
-}
-
-.bann-button-bg-layer.-yellow {
-  --tw-bg-opacity: 1;
-  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
-}
-
-.bann-button:hover .bann-button-inner-static {
-  opacity: 0;
-  transform: translateY(-70%);
-  transition:
-    transform 1.4s cubic-bezier(0.19, 1, 0.22, 1),
-    opacity 0.3s linear;
-}
-
-.bann-button:hover .bann-button-inner-hover {
-  opacity: 1;
-  color: black;
-  border-color: black;
-  transform: translateY(0);
-  transition:
-    transform 1.4s cubic-bezier(0.19, 1, 0.22, 1),
-    opacity 1.4s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.bann-button:hover .bann-button-bg-layer {
-  transition:
-    transform 1.3s cubic-bezier(0.19, 1, 0.22, 1),
-    opacity 0.3s linear;
-}
-
-.bann-button:hover .bann-button-bg-layer-1 {
-  transform: scale(1);
-}
-
-.bann-button:hover .bann-button-bg-layer-2 {
-  transition-delay: 0.1s;
-  transform: scale(1);
-}
-
-.bann-button:hover .bann-button-bg-layer-3 {
-  transition-delay: 0.2s;
-  transform: scale(1);
-}
-
-
-/* Ensure the button wrapper is not affected by blur */
-.button-wrapper {
-  position: relative; /* Adjust to absolute/fixed if needed for layout */
-  z-index: 10; /* Above blurred content, below widget if it overlaps */
-}
-
-/* Blur effect for the main content */
-.bann-container.blurred {
-  filter: blur(5px);
-  transition: filter 0.3s ease-in-out; /* Smooth transition */
+@media (prefers-reduced-motion: reduce) {
+  .digital-sean-banner-button { transition: none; }
 }

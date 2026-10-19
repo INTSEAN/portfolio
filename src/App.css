@@ -28,7 +28,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 75px;
+  scroll-padding-top: 120px;
 }
 
 body {
@@ -88,25 +88,27 @@ p.danger {
 /************ Navbar Css ************/
 nav.navbar {
   padding: 18px 0;
-  position: fixed;
+  position: sticky;
   width: 100%;
   top: 0;
   z-index: 9999;
-  transition:  0.32s ease-in-out;
+  background-color: #121212;
+  border-bottom: 1px solid #ffffff12;
+  transition: background-color 180ms ease;
 }
 nav.navbar.scrolled {
-  padding: 0px 0;
+  padding: 18px 0;
   background-color: #121212;
 }
 nav.navbar a.navbar-brand {
-    width: 9%;
+    width: 72px;
 }
 nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 400;
   color: #fff !important;
-  letter-spacing: 0.8px;
-  padding: 0 25px;
-  font-size: 18px;
+  letter-spacing: 0.02em;
+  padding: 0 22px;
+  font-size: 16px;
   opacity: 0.75;
 }
 nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
@@ -237,7 +239,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 /************ Banner Css ************/
 .banner {
   margin-top: 0;
-  padding: 260px 0 100px 0;
+  padding: 96px 0 100px 0;
   background-image: url('./assets/img/banner-bg.png');
   background-position: top center;
   background-size: cover;

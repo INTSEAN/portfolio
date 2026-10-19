@@ -42,8 +42,8 @@ export default function App() {
   }, []);
   return (
     <>
-      {!immersive && <Bann />}
       <NavBar immersive={immersive} />
+      {!immersive && <Bann />}
       {immersive ? (
         <main className="gallery-page">
           <Suspense fallback={<section className="gallery-loading" role="status">Loading gallery…</section>}>
